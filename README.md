@@ -32,3 +32,14 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## TODO
+
+- Lorsqu'on clique sur le button itinéraire, affiches les itinéraires entre le point de la searchbar et ceux déjà enregistrés en favoris
+- Empêcher l'ajout de la même adresse
+- Mettre en place un store
+
+### 
+- Mettre en place Redux, mettre dans le state l'array des adresses enregistrées
+- la current Address comme point de départ de l'itinéraire
+

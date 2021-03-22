@@ -12,13 +12,13 @@ interface Props {
 const AddressItem = ({ address, deleteAddress }) => {
   return (
     <Paper className="flex items-center justify-between p-2 mb-1 font-thin text-sm hover:bg-gray-50 cursor-pointer">
-      <p className="w-1/2 overflow-hidden">{address.address}</p>
+      <p className="w-1/2 overflow-hidden">{address}</p>
 
       <IconButton
         color="primary"
         className="p-4 "
         aria-label="directions"
-        onClick={deleteAddress(address.address)}
+        onClick={deleteAddress(address)}
       >
         <DeleteIcon />
       </IconButton>

@@ -1,3 +1,5 @@
+import { connect } from "react-redux";
+import { addAdress, deleteAddress } from '../../redux/actions';
 import { AddressItem } from "../AddressItem";
 
 interface Props {
@@ -13,4 +15,5 @@ const AddressList = ({ addressList, deleteAddress }) => {
   ));
 };
 
-export default AddressList;
+
+export default AddressList
