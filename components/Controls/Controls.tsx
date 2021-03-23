@@ -19,28 +19,27 @@ const Controls: FC<Props> = ({ setDirections }) => {
   const { startAddress } = useStateContext();
 
   const fetchDirections = () => {
-    let items = [];
-    addressList.map((address) => {
-      const directionsService = new google.maps.DirectionsService();
+    //let items = [];
 
-      const origin = address.address;
-      const destination = startAddress;
+    let items = addressList.map((address) => {
+      const directionsService = new google.maps.DirectionsService();
 
       directionsService.route(
         {
-          origin: origin,
-          destination: destination,
-          travelMode: google.maps.TravelMode.TRANSIT,
+          origin: startAddress,
+          destination: address,
+          travelMode: google.maps.TravelMode.DRIVING,
         },
         (result, status) => {
           if (status === google.maps.DirectionsStatus.OK) {
-            items.push(result);
+            return result;
           } else {
-            console.error(`error fetching directions ${result}`);
+            console.error(`error fetching directions ${result} ${status}`);
+            return "";
           }
         }
       );
-    });
+    })
     setDirections(items);
   };
 

@@ -1,8 +1,8 @@
 import { useReducer, useContext, createContext } from 'react'
 
 const initialState = {
-  addressList: ['45 Rue Edouard Nortier, Neuilly-sur-Seine, France', '184 Rue du Faubourg Saint-Antoine, Paris, France'],
-  startAddress: '',
+  addressList: ['45 Rue Edouard Nortier, Neuilly-sur-Seine, France', '42 Avenue de la Grande Armée, Paris, France'],
+  startAddress: '45 Rue Delizy, Pantin, France',
 }
 
 const StateContext = createContext({})

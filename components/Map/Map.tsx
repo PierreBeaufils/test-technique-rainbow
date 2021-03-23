@@ -1,5 +1,7 @@
 import { FC, useRef, useEffect, useState, useCallback } from "react";
-import { DirectionsRenderer, GoogleMap } from "@react-google-maps/api";
+import { DirectionsRenderer, GoogleMap, Marker } from "@react-google-maps/api";
+import { DirectionsService } from "google-map-react";
+import { useStateContext, useDispatchContext } from '../Context'
 
 interface Props {
   className?: string;
@@ -19,6 +21,7 @@ const center = {
 
 const Map: FC<Props> = (directions) => {
   const [map, setMap] = useState(null);
+
   const onLoad = useCallback(function callback(map) {
     setMap(map);
   }, []);
@@ -28,11 +31,15 @@ const Map: FC<Props> = (directions) => {
   }, []);
 
   return (
-    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={13}>
-      {directions &&
-        directions.directions.map((route) => {
-          <DirectionsRenderer directions={route} />;
-        })}
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={13}
+    >
+      <Marker position={{ lat: 48.00, lng: -122.00 }} />
+      {directions && directions.directions.map((route) => {
+        <DirectionsRenderer directions={route} />
+      })}
     </GoogleMap>
   );
 };
