@@ -9,7 +9,6 @@ interface Props {
 }
 
 const AddressList = () => {
-  console.log(useStateContext())
   const { addressList } = useStateContext();
   const dispatch = useDispatchContext();
 

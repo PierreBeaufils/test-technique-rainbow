@@ -6,6 +6,7 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
+import { useStateContext, useDispatchContext } from '../Context'
 import useOnclickOutside from "react-cool-onclickoutside";
 import _uniqueId from "lodash/uniqueId";
 import newId from "../../utils/newid";
@@ -46,6 +47,15 @@ const SearchBar: FC<Props> = ({
     debounce: 300,
   });
 
+  const { addressList } = useStateContext();
+  const dispatch = useDispatchContext();
+
+  const handleAddAddress = (address) =>
+    dispatch({
+      type: 'ADD_ADDRESS',
+      payload: address
+    })
+
   const ref = useOnclickOutside(() => {
     clearSuggestions();
   });
@@ -69,10 +79,15 @@ const SearchBar: FC<Props> = ({
   };
 
   const setEndAddresses = () => {
-    let items = [...endAddresses];
-    const id = newId();
-    items.push({ id: id, address: value });
-    value !== "" ? setEndAddress(items) : alert("adresse non renseignée");
+    let item = addressList.find(address => address === value);
+
+    item ? alert("adresse déjà ajoutée") : null; // Handle duplicated items
+    value === "" ? alert("adresse non renseignée") : null; // handle empty imput
+
+    // Handle add to address List
+    if (!item && value !== "") {
+      handleAddAddress(value);
+    }
   };
 
   return (
