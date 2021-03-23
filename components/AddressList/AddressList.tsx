@@ -10,6 +10,7 @@ interface Props {
 
 const AddressList = () => {
   const { addressList } = useStateContext();
+  const { startAddress } = useStateContext();
   const dispatch = useDispatchContext();
 
   const handleDeleteAddress = (address) =>

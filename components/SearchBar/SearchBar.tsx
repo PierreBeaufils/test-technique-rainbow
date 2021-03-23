@@ -42,6 +42,7 @@ const SearchBar: FC<Props> = ({
   });
 
   const { addressList } = useStateContext();
+  const { startAddress } = useStateContext();
   const dispatch = useDispatchContext();
 
   const handleAddAddress = (address) =>
