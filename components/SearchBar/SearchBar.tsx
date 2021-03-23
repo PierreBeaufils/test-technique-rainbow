@@ -14,10 +14,7 @@ import newId from "../../utils/newid";
 interface Props {
   className?: string;
   children?: any;
-  setStartAddress: Function;
-  setEndAddress: Function;
   fetchDirections: Function;
-  endAddresses: Array<EndAddress>;
 }
 
 const center = { lat: 48.85641, lng: 2.3488 };
@@ -29,9 +26,6 @@ const defaultBounds = {
 };
 
 const SearchBar: FC<Props> = ({
-  setStartAddress,
-  setEndAddress,
-  endAddresses,
   fetchDirections,
 }) => {
   const {
@@ -53,6 +47,12 @@ const SearchBar: FC<Props> = ({
   const handleAddAddress = (address) =>
     dispatch({
       type: 'ADD_ADDRESS',
+      payload: address
+    })
+
+  const setStartAddress = (address) =>
+    dispatch({
+      type: 'SET_START_ADDRESS',
       payload: address
     })
 

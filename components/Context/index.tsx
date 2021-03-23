@@ -2,7 +2,7 @@ import { useReducer, useContext, createContext } from 'react'
 
 const initialState = {
   addressList: ['45 Rue Edouard Nortier, Neuilly-sur-Seine, France', '184 Rue du Faubourg Saint-Antoine, Paris, France'],
-  currentAddress: '',
+  startAddress: '',
 }
 
 const StateContext = createContext({})
@@ -14,8 +14,8 @@ const reducer = (state, action) => {
       return { ...state, addressList: [...state.addressList, action.payload] }
     case 'DELETE_ADDRESS':
       return { ...state, addressList: state.addressList.filter(item => item !== action.payload) }
-    case 'SET_CURRENT_ADDRESS':
-      return { ...state, currentAddress: action.payload }
+    case 'SET_START_ADDRESS':
+      return { ...state, startAddress: action.payload }
     default:
       throw new Error(`Unknown action: ${action.type}`)
   }

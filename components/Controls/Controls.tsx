@@ -4,6 +4,7 @@ import DirectionsIcon from "@material-ui/icons/Directions";
 import { FC, useRef, useEffect, useState } from "react";
 import { DirectionsService } from "google-map-react";
 import { AddressList } from "../AddressList";
+import { useStateContext, useDispatchContext } from '../Context'
 import { CodeSharp, MapSharp } from "@material-ui/icons";
 
 interface Props {
@@ -13,12 +14,13 @@ interface Props {
 }
 
 const Controls: FC<Props> = ({ setDirections }) => {
-  const [startAddress, setStartAddress] = useState(null);
-  const [endAddresses, setEndAddress] = useState(new Array<EndAddress>());
+  //const [startAddress, setStartAddress] = useState(null);
+  const { addressList } = useStateContext();
+  const { startAddress } = useStateContext();
 
   const fetchDirections = () => {
     let items = [];
-    endAddresses.map((address) => {
+    addressList.map((address) => {
       const directionsService = new google.maps.DirectionsService();
 
       const origin = address.address;
@@ -41,11 +43,7 @@ const Controls: FC<Props> = ({ setDirections }) => {
     });
     setDirections(items);
   };
-  const deleteAddress = (address) => () => {
-    setEndAddress(
-      endAddresses.filter((addressItem) => addressItem.address !== address)
-    );
-  };
+
   return (
     <div
       id="controls"
@@ -53,11 +51,8 @@ const Controls: FC<Props> = ({ setDirections }) => {
     >
       <SearchBar
         fetchDirections={fetchDirections}
-        setStartAddress={setStartAddress}
-        endAddresses={endAddresses}
-        setEndAddress={setEndAddress}
       />
-      <AddressList addressList={endAddresses} deleteAddress={deleteAddress} />
+      <AddressList />
     </div>
   );
 };

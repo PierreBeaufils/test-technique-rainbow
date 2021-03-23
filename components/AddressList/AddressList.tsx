@@ -12,11 +12,6 @@ const AddressList = () => {
   const { addressList } = useStateContext();
   const dispatch = useDispatchContext();
 
-  const handleAddAddress = (address) =>
-    dispatch({
-      type: 'ADD_ADDRESS',
-      payload: address
-    })
   const handleDeleteAddress = (address) =>
     dispatch({
       type: 'DELETE_ADDRESS',
