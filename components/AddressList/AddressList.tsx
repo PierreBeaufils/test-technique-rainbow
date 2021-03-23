@@ -1,5 +1,4 @@
-import { connect } from "react-redux";
-import { addAdress, deleteAddress } from '../../redux/actions';
+import { useStateContext, useDispatchContext } from '../Context'
 import { AddressItem } from "../AddressItem";
 
 interface Props {
@@ -9,11 +8,33 @@ interface Props {
   deleteAddress: Function;
 }
 
-const AddressList = ({ addressList, deleteAddress }) => {
-  return addressList.map((address, index) => (
-    <AddressItem key={index} address={address} deleteAddress={deleteAddress} />
-  ));
+const AddressList = () => {
+  console.log(useStateContext())
+  const { addressList } = useStateContext();
+  const dispatch = useDispatchContext();
+
+  const handleAddAddress = (address) =>
+    dispatch({
+      type: 'ADD_ADDRESS',
+      payload: address
+    })
+  const handleDeleteAddress = (address) =>
+    dispatch({
+      type: 'DELETE_ADDRESS',
+      payload: address
+    })
+
+  return (
+    addressList.map((address, index) => (
+      <AddressItem key={index} address={address} deleteAddress={handleDeleteAddress} />
+    ))
+  )
 };
 
 
 export default AddressList
+/*
+return stateContext.map((address, index) => (
+  <AddressItem key={index} address={address} deleteAddress={deleteAddress} />
+));
+*/

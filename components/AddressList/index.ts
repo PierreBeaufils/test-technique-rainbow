@@ -1,1 +1,1 @@
-export { default as AddressList } from "./AddressListContainer";
+export { default as AddressList } from "./AddressList";

@@ -1,5 +1,4 @@
-import { Provider } from 'react-redux';
-import store from '../redux/store';
+import { Provider } from '../components/Context';
 
 import "../styles/globals.css";
 import Head from "next/head";
@@ -9,7 +8,7 @@ config.autoAddCss = false;
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Provider store={store}>
+    <Provider>
       <Head>
         <link
           rel="stylesheet"

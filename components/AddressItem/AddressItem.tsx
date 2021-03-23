@@ -18,7 +18,7 @@ const AddressItem = ({ address, deleteAddress }) => {
         color="primary"
         className="p-4 "
         aria-label="directions"
-        onClick={deleteAddress(address)}
+        onClick={() => deleteAddress(address)}
       >
         <DeleteIcon />
       </IconButton>
