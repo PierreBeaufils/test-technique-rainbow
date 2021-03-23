@@ -11,7 +11,7 @@ const DispatchContext = createContext({})
 const reducer = (state, action) => {
   switch (action.type) {
     case 'ADD_ADDRESS':
-      return { ...state, currentAddress: action.payload }
+      return { ...state, addressList: [...state.addressList, action.payload] }
     case 'DELETE_ADDRESS':
       return { ...state, addressList: state.addressList.filter(item => item !== action.payload) }
     case 'SET_CURRENT_ADDRESS':
