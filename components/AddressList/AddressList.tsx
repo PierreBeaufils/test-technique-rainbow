@@ -4,12 +4,12 @@ import { AddressItem } from "../AddressItem";
 interface Props {
   className?: string;
   children?: any;
-  addressList: Array<EndAddress>;
+  addressesList: Array<EndAddress>;
   deleteAddress: Function;
 }
 
 const AddressList = () => {
-  const { addressList } = useStateContext();
+  const { addressesList } = useStateContext();
   const { startAddress } = useStateContext();
   const dispatch = useDispatchContext();
 
@@ -20,7 +20,7 @@ const AddressList = () => {
     })
 
   return (
-    addressList.map((address, index) => (
+    addressesList.map((address, index) => (
       <AddressItem key={index} address={address} deleteAddress={handleDeleteAddress} />
     ))
   )

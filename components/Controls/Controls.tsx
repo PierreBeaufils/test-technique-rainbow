@@ -15,13 +15,13 @@ interface Props {
 
 const Controls: FC<Props> = ({ setDirections }) => {
   //const [startAddress, setStartAddress] = useState(null);
-  const { addressList } = useStateContext();
+  const addressesList = useStateContext().addressesList;
   const { startAddress } = useStateContext();
 
   const fetchDirections = () => {
     //let items = [];
 
-    let items = addressList.map((address) => {
+    let items = addressesList.map((address) => {
       const directionsService = new google.maps.DirectionsService();
 
       directionsService.route(

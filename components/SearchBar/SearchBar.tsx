@@ -41,7 +41,7 @@ const SearchBar: FC<Props> = ({
     debounce: 300,
   });
 
-  const { addressList } = useStateContext();
+  const { addressesList } = useStateContext();
   const { startAddress } = useStateContext();
   const dispatch = useDispatchContext();
 
@@ -80,7 +80,7 @@ const SearchBar: FC<Props> = ({
   };
 
   const setEndAddresses = () => {
-    let item = addressList.find(address => address === value);
+    let item = addressesList.find(address => address === value);
 
     item ? alert("adresse déjà ajoutée") : null; // Handle duplicated items
     value === "" ? alert("adresse non renseignée") : null; // handle empty imput
